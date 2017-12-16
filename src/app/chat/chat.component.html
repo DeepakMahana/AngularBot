@@ -1,0 +1,51 @@
+
+<div id="particle-bc">
+  <particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
+  
+  <form #myForm="ngForm" (ngSubmit)="submitForm()">
+  
+  <mat-card class="card">
+    
+    <mat-card-header style="border-bottom: 1px solid grey">
+      <div img mat-card-avatar class="header-image"></div>
+      <mat-card-title style="font-size: 30px;">Quosphere Bot</mat-card-title>
+      <mat-card-subtitle style="font-size: 20px;"> Lets Talk !</mat-card-subtitle>
+    </mat-card-header>
+  
+    <mat-card-content class="content" style="height: 350px; overflow-y: auto;" #scrollMe [scrollTop]="scrollMe.scrollHeight"> 
+      <ng-container *ngFor="let message of messages | async">
+        
+        <div class="message" [ngClass]="{ 'from': message.sentBy === 'Bot',
+                                          'to':   message.sentBy === 'User' }">
+  
+         {{ message.sentBy }} : {{ message.content }} 
+                                                                
+          
+       </div>
+      
+      </ng-container>
+    </mat-card-content>
+  
+    <mat-card-footer class="card-footer">
+      
+        <!-- <label for="nameField">Your Message</label> -->
+          <mat-form-field class="textspace">
+  
+            <input matInput name="input" type="text" placeholder="Your Message" [(ngModel)]="formValue" #input="ngModel" required minlength="1">
+              <mat-hint>
+                <span [hidden]="!input.errors?.required">Input is Required</span>
+              </mat-hint> 
+  
+          </mat-form-field>
+  
+        <button [disabled]="!myForm.form.valid" mat-raised-button (click)="sendMessage()" type="submit" [disabled]="!testForm" color="primary" > Send </button>
+    
+      </mat-card-footer>
+  
+  
+  </mat-card>
+  
+  </form>
+  
+  </div>
+  

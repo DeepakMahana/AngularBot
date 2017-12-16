@@ -1,0 +1,22 @@
+$lt-gray: #ddd;
+$background-dark: #512DA8;
+$background-light: #9575CD;
+$background-pale: #D1C4E9;
+
+@mixin zero-margin($pad-up-down, $pad-left-right) {
+    margin: 0px auto;
+    padding: $pad-up-down $pad-left-right;
+}
+
+.footer{
+    background-color: $background-pale;
+    @include zero-margin(10px, 0px);
+}
+
+img {
+    border-radius: 50%;
+}
+
+.btn-google-plus{color:#fff!important;background-color:#dd4b39!important;}
+.btn-github {color:#fff!important; background-color:#3b5998!important;}
+.btn-linkedin{color:#fff!important;background-color:#007bb6!important;}
